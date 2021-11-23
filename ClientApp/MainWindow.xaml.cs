@@ -48,17 +48,17 @@ namespace ClientApp
                     }
                     else
                     {
-                        MessageBox.Show($"最新バージョンです");
+                        // MessageBox.Show($"最新バージョンです");
                     }
                 }
                 else
                 {
-                    MessageBox.Show($"最新バージョンを取得できません");
+                    // MessageBox.Show($"最新バージョンを取得できません");
                 }
             }
             catch
             {
-                MessageBox.Show($"最新バージョンを取得できません");
+                // MessageBox.Show($"最新バージョンを取得できません");
             }
         }
     }
