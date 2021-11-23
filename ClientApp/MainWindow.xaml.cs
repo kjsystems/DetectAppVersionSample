@@ -23,6 +23,8 @@ namespace ClientApp
         public MainWindow()
         {
             InitializeComponent();
+
+            // アプリ起動時にバージョンをチェックする
             ContentRendered += async (s, e) =>
             {
                 await CheckVersion();
@@ -37,28 +39,27 @@ namespace ClientApp
                 var path = "http://localhost:7071/api/GetVersion";
 
                 // 最新バージョンを取得する
-                AppInfo? appInfo = null;
                 HttpResponseMessage response = await client.GetAsync(path);
                 if (response.IsSuccessStatusCode)
                 {
-                    appInfo = await response.Content.ReadFromJsonAsync<AppInfo>();
+                    var appInfo = await response.Content.ReadFromJsonAsync<AppInfo>();
                     if (appInfo?.Version != this.AppVerion)
                     {
                         MessageBox.Show($"最新バージョン（{appInfo?.Version}）があります");
                     }
                     else
                     {
-                        // MessageBox.Show($"最新バージョンです");
+                        MessageBox.Show($"最新バージョンです");
                     }
                 }
                 else
                 {
-                    // MessageBox.Show($"最新バージョンを取得できません");
+                    MessageBox.Show($"最新バージョンを取得できません");
                 }
             }
             catch
             {
-                // MessageBox.Show($"最新バージョンを取得できません");
+                MessageBox.Show($"最新バージョンを取得できません");
             }
         }
     }
