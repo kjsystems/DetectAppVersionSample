@@ -2,13 +2,10 @@
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using ClientApp.Core;
 
 namespace ClientApp.Wpf
 {
-    public class AppInfo
-    {
-        public string Version { get; set; }
-    }
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -33,33 +30,14 @@ namespace ClientApp.Wpf
 
         async Task CheckVersion()
         {
-            try
-            {
-                var client = new HttpClient();
-                var path = "http://localhost:7071/api/GetVersion";
+            // バージョンを取得する
+            var appInfo = await GetVersionService.GetVersion();
 
-                // 最新バージョンを取得する
-                HttpResponseMessage response = await client.GetAsync(path);
-                if (response.IsSuccessStatusCode)
-                {
-                    var appInfo = await response.Content.ReadFromJsonAsync<AppInfo>();
-                    if (appInfo?.Version != this.AppVerion)
-                    {
-                        MessageBox.Show($"最新バージョン（{appInfo?.Version}）があります");
-                    }
-                    else
-                    {
-                        // MessageBox.Show($"最新バージョンです");
-                    }
-                }
-                else
-                {
-                    // MessageBox.Show($"最新バージョンを取得できません");
-                }
-            }
-            catch
+            // 最新バージョンが返ってくる
+            // バックエンドが起動してない場合は戻り値はnull
+            if (appInfo!=null && appInfo.Version != this.AppVerion)
             {
-                // MessageBox.Show($"最新バージョンを取得できません");
+                MessageBox.Show($"最新バージョン（{appInfo?.Version}）があります");
             }
         }
     }
