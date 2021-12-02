@@ -1,8 +1,6 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
+﻿using ClientApp.Core;
 using System.Threading.Tasks;
 using System.Windows;
-using ClientApp.Core;
 
 namespace ClientApp.Wpf
 {

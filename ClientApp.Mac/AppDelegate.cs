@@ -1,8 +1,7 @@
-﻿using System.Net.Http;
+﻿using ClientApp.Core;
 using System.Threading.Tasks;
 using AppKit;
 using Foundation;
-using Newtonsoft.Json;
 
 namespace ClientApp.Mac
 {
@@ -35,39 +34,18 @@ namespace ClientApp.Mac
 
         async Task CheckVersion()
         {
-            try
+            // バージョンを取得する
+            var appInfo = await GetVersionService.GetVersion();
+
+            // 最新バージョンが返ってくる
+            // バックエンドが起動してない場合は戻り値はnull
+            if (appInfo!=null && appInfo.Version != this.AppVerion)
             {
-                var client = new HttpClient();
-                var path = "http://localhost:7071/api/GetVersion";
-
-                // 最新バージョンを取得する
-                HttpResponseMessage response = await client.GetAsync(path);
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonText = await response.Content.ReadAsStringAsync();
-                    var appInfo = JsonConvert.DeserializeObject<AppInfo>(jsonText);
-
-                    if (appInfo?.Version != this.AppVerion)
-                    {
                         using (var alert = new NSAlert())
                         {
                             alert.MessageText = $"最新バージョン（{appInfo?.Version}）があります";
                             alert.RunSheetModal(null);
                         }
-                    }
-                    else
-                    {
-                        // MessageBox.Show($"最新バージョンです");
-                    }
-                }
-                else
-                {
-                    // MessageBox.Show($"最新バージョンを取得できません");
-                }
-            }
-            catch
-            {
-                // MessageBox.Show($"最新バージョンを取得できません");
             }
         }
     }
