@@ -1,6 +1,6 @@
-﻿using ClientApp.Core;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AppKit;
+using ClientApp.Core;
 using Foundation;
 
 namespace ClientApp.Mac
