@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Net.Http;
+#if NET48
+using Newtonsoft.Json;
+#else
 using System.Net.Http.Json;
-using System.Text;
+#endif
 using System.Threading.Tasks;
 
 namespace ClientApp.Core
@@ -25,10 +25,15 @@ namespace ClientApp.Core
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
+#if NET48
+                    var jsonText = await response.Content.ReadAsStringAsync();
+                    appInfo = JsonConvert.DeserializeObject<AppInfo>(jsonText);
+#else
                     appInfo = await response.Content.ReadFromJsonAsync<AppInfo>();
+#endif
                 }
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException)
             {
                 // UNDONE: 通信失敗のエラー処理
             }
