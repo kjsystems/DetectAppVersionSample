@@ -3,7 +3,7 @@
 using AppKit;
 using Foundation;
 
-namespace ClientAppMac
+namespace ClientApp.Mac
 {
     public partial class ViewController : NSViewController
     {

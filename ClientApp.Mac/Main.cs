@@ -1,6 +1,6 @@
 ﻿using AppKit;
 
-namespace ClientAppMac
+namespace ClientApp.Mac
 {
     static class MainClass
     {

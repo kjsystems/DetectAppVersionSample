@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientApp.Wpf", "ClientApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp", "FunctionApp\FunctionApp.csproj", "{9E656C17-11D7-4F83-9A1F-F017CB125EA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAppMac", "ClientApp.Mac\ClientAppMac.csproj", "{AED2FB11-9D7F-46E7-A33B-1594DB191C53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp.Mac", "ClientApp.Mac\ClientApp.Mac.csproj", "{AED2FB11-9D7F-46E7-A33B-1594DB191C53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@
 //
 using Foundation;
 
-namespace ClientAppMac
+namespace ClientApp.Mac
 {
     [Register("ViewController")]
     partial class ViewController

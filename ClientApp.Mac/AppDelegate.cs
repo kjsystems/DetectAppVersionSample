@@ -4,7 +4,7 @@ using AppKit;
 using Foundation;
 using Newtonsoft.Json;
 
-namespace ClientAppMac
+namespace ClientApp.Mac
 {
     [Register("AppDelegate")]
     public class AppDelegate : NSApplicationDelegate
