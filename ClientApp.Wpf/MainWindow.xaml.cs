@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ClientApp
+namespace ClientApp.Wpf
 {
     public class AppInfo
     {
